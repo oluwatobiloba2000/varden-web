@@ -1,0 +1,246 @@
+html, body {
+  font-weight: 500;
+  /* font-family: "HK Grotesk", sans-serif; */
+  font-family: 'Poppins', sans-serif !important;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+a,
+li {
+  /* font-family: "HK Grotesk", sans-serif; */
+  font-family: 'Poppins', sans-serif !important;
+}
+.main_btn{
+  padding:20px 30px;
+  color:#fff;
+  background-color:#63d984;
+}
+.how-it-works {
+  padding: 100px 0;
+  background-color: #f9f9f9;
+}
+.how-it-works-img{
+  width:50px;
+  height:50px;
+}
+.workings{
+  margin-left:20px;
+}
+.workings p{
+  margin-top:20px;
+}
+.food-category {
+  padding: 100px 0;
+}
+
+.how-it-works
+
+.food-category_img img {
+  width: 100%;
+  height: auto;
+  max-height: 220px;
+  object-fit: cover;
+  border-radius: 3px;
+}
+.food-category_img {
+  position: relative;
+  padding:10px;
+}
+.bg_same-height {
+  width:100%;
+  height:340px;
+  position: relative;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius:3px;
+}
+.food-category a{
+  text-decoration: none;
+}
+.love-meal{
+  background-image:url('https://res.cloudinary.com/dotvhpvra/image/upload/v1551224237/varden/PNUS_1013_WFM_mosaic_prepared_tile_browser_2x._CB476230172_.jpg');
+}
+.organic{
+  background-image:url('https://res.cloudinary.com/dotvhpvra/image/upload/v1559623204/varden/download-min.jpg')
+}
+.recipes{
+  background-image:url('https://res.cloudinary.com/dotvhpvra/image/upload/v1551227123/varden/louis-hansel-1160000-unsplash-compressed.jpg');
+}
+.varden-events{
+  background-image:url('https://res.cloudinary.com/dotvhpvra/image/upload/v1551228864/varden/phpThumb_generated_thumbnail-compressed.jpg')
+}
+a:hover>.place_ontop{
+  visibility: visible;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  color:red;
+}
+.place_ontop {
+  visibility: hidden;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  color: #fff;
+  height: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  -webkit-transform: scale(1.1);
+	transform: scale(1.1);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+
+.place_ontop button {
+  padding: 10px 20px;
+  color: #000;
+  border: none;
+  border-radius: 3px;
+}
+.food-category_usp {
+  max-width: 450px;
+}
+.food-category_usp h2 {
+  margin-bottom: 40px;
+}
+.is_underlined {
+  position: relative;
+  z-index: 0;
+}
+.underlined::after {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: -1;
+  left: 2px;
+  bottom: -10px;
+  width: 200px;
+  height: 5px;
+  background-color: #63d984;
+  opacity: 0.25;
+  max-width: 200px;
+  transition: all 0.4s ease;
+}
+
+.details h4 {
+  font-size: 18px;
+  margin-top: 10px;
+  color: #292929;
+}
+.details p {
+  font-size: 16px;
+  color: #5d5d5d;
+}
+
+.how-it-works .heading{
+  margin-bottom: 70px !important;
+}
+
+.margin-top-sm{
+  margin-top:50px;
+}
+
+.checklist{margin-top:50px}
+.checklist span{
+  display: flex;
+  font-size:12px;
+  align-items: center;
+}
+.checklist span img{
+  width:20px;
+  height:20px;
+  margin-right:10px;
+}
+
+.modal{
+  display:none;
+  background-color:rgba(0,0,0,0.6);
+  width:100%;
+  position:fixed;
+  z-index: 2;
+}
+.modal-content{
+  padding:20px;
+  background-color:#fff;
+  margin-top:50px;
+}
+.modal-content ul{
+  margin:0;
+}
+.modal-content ul li{
+  list-style:none;
+  padding:15px;
+}
+.mb-menu-btn{
+  width:100%;
+  padding:10px 20px;
+  background-color:#63d984;
+  color:#fff;
+}
+.slider-img-con{
+  widows: 100%;
+  height:500px;
+}
+.slider-img-con img{
+  width:100%;
+  height:100%;
+  object-fit: cover;
+}
+.swiper-container{
+  z-index: -10;
+}
+/* .swiper-wrapper{
+  position: static !important;
+} */
+.top-margin-xs{
+  margin-top:70px;
+}
+@media(max-width:460px){
+  .food-category_img {
+    padding:0;
+  }
+  .margin-top-sm{
+    margin-top:20px;
+  }
+  .checklist{margin-top:20px;margin-bottom:20px;}
+  .food-category{
+    padding:50px 0;
+  }
+  .how-it-works {
+    padding: 50px 0;
+  }
+  .how-it-works .heading{
+    margin-bottom: 40px !important;
+  }
+  .how-it-works-img{
+    widows:30px;
+    height:30px;
+  }
+  .workings{
+    margin-left:20px;
+  }
+  .workings p{
+    margin-top:20px;
+    font-size:15px;
+  }
+  .underlined::after{
+    max-width: 150px;
+  }
+  .workings h5{
+    font-size:18px;
+    font-weight: 450;
+  }
+  .mb-top-margin{
+    margin-top:20px;
+  }
+}

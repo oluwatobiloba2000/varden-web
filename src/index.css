@@ -1,0 +1,153 @@
+@font-face {
+  font-family: "HK Grotesk";
+  font-style: normal;
+  font-weight: normal;
+  /* src: local("Circular"), url(./fonts/CircularStd-Book.woff) format("woff"); */
+}
+
+*,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+li,
+a,
+ul,
+form,
+button,
+label,
+textarea {
+  font-family: "HK Grotesk", sans-serif;
+}
+
+p {
+  font-family: "HK Grotesk", sans-serif;
+}
+
+.control {
+  font-size: 14px;
+  position: relative;
+  display: block;
+  margin-bottom: 15px;
+  padding-left: 26px;
+  padding-top: 2px;
+  cursor: pointer;
+}
+
+.control input {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+.control__indicator {
+  position: absolute;
+  top: 2px;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+  background: #ccc;
+}
+
+.control--radio .control__indicator {
+  border-radius: 50%;
+}
+
+/* Hover and focus states */
+.control:hover input ~ .control__indicator,
+.control input:focus ~ .control__indicator {
+  background: #ccc;
+}
+
+/* Checked state */
+.control input:checked ~ .control__indicator {
+  background: #21a746;
+}
+
+/* Hover state whilst checked */
+.control:hover input:not([disabled]):checked ~ .control__indicator,
+.control input:checked:focus ~ .control__indicator {
+  background: #21a746;
+}
+
+/* Disabled state */
+.control input:disabled ~ .control__indicator {
+  pointer-events: none;
+  opacity: 0.6;
+  background: #e6e6e6;
+}
+
+/* Check mark */
+.control__indicator:after {
+  position: absolute;
+  display: none;
+  content: "";
+}
+
+/* Show check mark */
+.control input:checked ~ .control__indicator:after {
+  display: block;
+}
+
+/* Checkbox tick */
+.control--checkbox .control__indicator:after {
+  top: 5px;
+  left: 7px;
+  width: 5px;
+  height: 8px;
+  transform: rotate(45deg);
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+}
+
+/* Disabled tick colour */
+.control--checkbox input:disabled ~ .control__indicator:after {
+  border-color: #7b7b7b;
+}
+
+ul{
+  margin:0;
+  padding:0;
+}
+.mobile-app-con .stores{
+  list-style: none;
+ 
+}
+.mobile-app-con .margin-top-sm{
+  margin-top:150px
+}
+.mobile-app-con .store:first-child {
+  margin-right: 18px;
+}
+
+.mobile-app-con .store {
+  display: inline-block;
+}
+
+
+.mobile-app-con .store.google .action {
+  background-image: url('./assets/google-play-badge.svg');
+}
+.mobile-app-con .store.appstore .action {
+  background-image: url('./assets/appstore.svg');
+}
+
+.mobile-app-con .action:first-child {
+  width: 8.4375em;
+  height: 2.5em;
+}
+.mobile-app-con .action {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  display: inline-block;
+  overflow: hidden;
+  text-indent: -1000em;
+  width: 7.375em;
+  height: 2.375em;
+}
