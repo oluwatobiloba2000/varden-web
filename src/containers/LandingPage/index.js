@@ -9,6 +9,11 @@ import Navbar from "../../components/Header/Navbar";
 import { Wrapper, Masthead, ProduceCardWrapper } from "./index.styles";
 // import { SwiperWrapper } from "../../components/Header/custom-swiper.styles";
 import Swiper from 'react-id-swiper';
+import starSvg from '../../assets/star.svg';
+import menu2Img from "../../assets/menu2.png";
+import locationImg from "../../assets/location.png";
+import deliveryImg from "../../assets/delivery2.png"
+import phoneSvg from "../../assets/phones.svg";
 
 const MastheadSwiper = (props) => {
   const params = {
@@ -114,10 +119,10 @@ const ProduceSwiper = (props) => {
                 <div className="text-center">
                   <div className="text-right">
                     <span className="rating-box">
-                      <img src={require("../../assets/star.svg")} width="10px" alt="" className="img-fluid" /> <span className="inner">4.2</span>
+                      <img src={starSvg} width="10px" alt="" className="img-fluid" /> <span className="inner">4.2</span>
                     </span>
                   </div>
-                  <img src={item.img} alt="" className="img-fluid product-image" />
+                  <img style={{margin:'auto'}} src={item.img} alt="" className="img-fluid product-image" />
                   <h4>{item.headerText}</h4>
                   <p className="mt-2">{item.subText}</p>
                 </div>
@@ -190,7 +195,7 @@ class LandingPage extends PureComponent {
               <div className="col-md-4">
                 <div className="how-it-works-item">
                   <div className="img row align-items-end">
-                    <img src={require("../../assets/menu2.png")} alt="" width="80%" className="img-fluid" />
+                    <img src={menu2Img} alt="" width="80%" className="img-fluid" />
                   </div>
                   <div className="content">
                     <p className="content-verb">Choose your</p>
@@ -202,7 +207,7 @@ class LandingPage extends PureComponent {
               <div className="col-md-4">
                 <div className="how-it-works-item">
                   <div className="img row align-items-end">
-                    <img src={require("../../assets/location.png")} alt="" className="img-fluid" />
+                    <img src={locationImg} alt="" className="img-fluid" />
                   </div>
                   <div className="content">
                     <p className="content-verb">Add your</p>
@@ -214,7 +219,7 @@ class LandingPage extends PureComponent {
               <div className="col-md-4">
                 <div className="how-it-works-item">
                   <div className="img row align-items-end">
-                    <img src={require("../../assets/delivery2.png")} alt="" className="img-fluid" />
+                    <img src={deliveryImg} alt="" className="img-fluid" />
                   </div>
                   <div className="content">
                     <p className="content-verb">Await your</p>
@@ -263,7 +268,7 @@ class LandingPage extends PureComponent {
                 <div className="col-1-cell-1 row align-items-end">
                   <div>
                     <h2>Roasted Chicken</h2>
-                    <p><img src={require("../../assets/star.svg")} width="10px" alt="" className="img-fluid" /> <span className="inner">4.2</span> (20 Reviews)</p>
+                    <p><img src={starSvg} width="10px" alt="" className="img-fluid" /> <span className="inner">4.2</span> (20 Reviews)</p>
                   </div>
                 </div>
               </div>
@@ -273,7 +278,7 @@ class LandingPage extends PureComponent {
                     <div className="col-2-cell-1 row align-items-end">
                       <div>
                         <h6>Hamburger</h6>
-                        <p><img src={require("../../assets/star.svg")} width="10px" alt="" className="img-fluid" /> <span className="inner">4.2</span> (20 Reviews)</p>
+                        <p><img src={starSvg} width="10px" alt="" className="img-fluid" /> <span className="inner">4.2</span> (20 Reviews)</p>
                       </div>
                     </div>
                   </div>
@@ -281,7 +286,7 @@ class LandingPage extends PureComponent {
                     <div className="col-2-cell-2 row align-items-end">
                       <div>
                         <h6>Chips</h6>
-                        <p><img src={require("../../assets/star.svg")} width="10px" alt="" className="img-fluid" /> <span className="inner">4.2</span> (20 Reviews)</p>
+                        <p><img src={starSvg} width="10px" alt="" className="img-fluid" /> <span className="inner">4.2</span> (20 Reviews)</p>
                       </div>
                     </div>
                   </div>
@@ -289,7 +294,7 @@ class LandingPage extends PureComponent {
                     <div className="col-2-cell-3 row align-items-end">
                       <div>
                         <h6>Rice & Varieties </h6>
-                        <p><img src={require("../../assets/star.svg")} width="10px" alt="" className="img-fluid" /> <span className="inner">4.2</span> (20 Reviews)</p>
+                        <p><img src={starSvg} width="10px" alt="" className="img-fluid" /> <span className="inner">4.2</span> (20 Reviews)</p>
                       </div>
                     </div>
                   </div>
@@ -297,7 +302,7 @@ class LandingPage extends PureComponent {
                     <div className="col-2-cell-4 row align-items-end">
                       <div>
                         <h6>Shredded Beef</h6>
-                        <p><img src={require("../../assets/star.svg")} width="10px" alt="" className="img-fluid" /> <span className="inner">4.2</span> (20 Reviews)</p>
+                        <p><img src={starSvg} width="10px" alt="" className="img-fluid" /> <span className="inner">4.2</span> (20 Reviews)</p>
                       </div>
                     </div>
                   </div>
@@ -353,7 +358,7 @@ class LandingPage extends PureComponent {
                 <button className="btn-app"><i className="mdi mdi-android" /> Apple Store </button>
               </div>
               <div className="col-md-7">
-                <img src={require("../../assets/phones.svg")} alt="" className="img-fluid" />
+                <img src={phoneSvg} alt="" className="img-fluid" />
               </div>
             </div>
           </div>
