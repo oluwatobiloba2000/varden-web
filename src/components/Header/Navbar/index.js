@@ -121,7 +121,7 @@ class Navbar extends PureComponent {
                       height: '20px',
                       position: 'relative',
                       marginTop: '12px'}}>
-                      <Link to="/checkout"
+                      <Link to="/cart"
                       style={{
                         display: 'flex'
                       }}
