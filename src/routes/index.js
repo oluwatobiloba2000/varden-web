@@ -46,6 +46,11 @@ export const Payment = Loadable({
   loading: loadingSpinner
 })
 
+export const PaymentSuccess = Loadable({
+  loader: () => import("../containers/Payment/paymentSuccess"),
+  loading: loadingSpinner
+})
+
 export const Barcode = Loadable({
   loader: () => import('../containers/BarcodeContainer'),
   loading: loadingSpinner
