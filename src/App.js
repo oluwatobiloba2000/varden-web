@@ -19,6 +19,7 @@ class App extends Component {
         <Route exact path="/reset-password" component={Guest(LoadableRoutes.Reset)} />
         {/* <Route exact path="/verification/:token" component={Guest(LoadableRoutes.Verification)} /> */}
         <Route path="/shop/:filter?" component={LoadableRoutes.Home} />
+        <Route path="/payment/success/:orderNumber" component={LoadableRoutes.PaymentSuccess} />
         <Route exact path="/products/:id" component={LoadableRoutes.SingleProductView} />
         {/* <Route exact path="/love-meals" component={LoadableRoutes.Lovemeals} /> */}
         {/* <Route exact path="/farm-to-table" component={LoadableRoutes.FarmToTable} /> */}

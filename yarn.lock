@@ -11660,6 +11660,11 @@ react-number-format@^4.5.5:
   dependencies:
     prop-types "^15.7.2"
 
+react-paystack@^3.0.3:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/react-paystack/-/react-paystack-3.0.3.tgz#016f4279e937cc844da0214d2d10a61c22471adb"
+  integrity sha512-w3mHQvCAHplOKode6cKxxSOwS6XNVWgOF3bjxmevFkcpHIvcuYBUOHqLlK8h3Pw7O7wqdfssm8bLPhYkvaNkRQ==
+
 react-places-autocomplete@^7.2.1:
   version "7.3.0"
   resolved "https://registry.yarnpkg.com/react-places-autocomplete/-/react-places-autocomplete-7.3.0.tgz#81a2345ae4a6fc35d7a712ccd4850d497553ba1b"
