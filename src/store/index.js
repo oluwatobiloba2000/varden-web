@@ -2,7 +2,7 @@ import { createStore, applyMiddleware, compose } from "redux";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import thunk from "redux-thunk";
-import logger from "redux-logger";
+// import logger from "redux-logger";
 import promise from "redux-promise-middleware";
 
 import reducers from "../reducers";
@@ -15,7 +15,7 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, reducers);
 
-const middleWare = [thunk, logger, promise()];
+const middleWare = [thunk, promise()];
 
 let composeEnhancers = compose;
 if (!process.env.NODE_ENV === 'prod' || !process.env.NODE_ENV === 'production') {
