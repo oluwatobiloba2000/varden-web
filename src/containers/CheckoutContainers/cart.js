@@ -1,6 +1,7 @@
 import React, { PureComponent } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import jwtDecode from 'jwt-decode';
 
 import Footer from "../../components/Footer/generalfooter";
 import { Button } from "@chakra-ui/react"
@@ -12,6 +13,7 @@ import { addToCart, fetchCart } from "../../actions/cart";
 import { Wrapper, CartWrapper } from "./checkout.styles";
 import CartPanel from "../../components/CartPanel";
 import NumberFormat from 'react-number-format';
+import arrowLeftSvg from "../../assets/left-arrow.svg";
 
 class Cart extends PureComponent {
   constructor(props) {
@@ -29,7 +31,7 @@ class Cart extends PureComponent {
   };
 
   onChange = e => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
   };
 
   onPaymentChange = e => {
@@ -40,28 +42,40 @@ class Cart extends PureComponent {
           [e.target.name]: e.target.value
         }
       },
-      () => console.log(this.state.cardDetails)
+      // () => console.log(this.state.cardDetails)
     );
   };
 
+    isTokenExpired = () => {
+    const currentUser = JSON.parse(localStorage.getItem('current_user'));
+    const token = (currentUser && currentUser.token);
+    if(token){
+        const decoded = jwtDecode(token);
+        if (decoded.exp * 1000 <= new Date()) return true;
+        return false;
+    }else{
+        return true
+    }
+}
+
   componentDidMount() {
     const user = JSON.parse(window.localStorage.getItem("current_user"));
-    if (!user) return;
-    if (user.hasOwnProperty("role")) {
-      console.log("it has role property");
-    } else {
-      this.setState({ token: user.token });
-      console.log("it has no role property");
+      if(this.isTokenExpired()){
+      alert("you have to login")
+      localStorage.removeItem('current_user')
+     return window.location.replace("/login");
     }
-    if (user && user.token) {
+      this.setState({ token: user.token });
+  
       this.convertCartItemsToObjects()
       // window.location.replace('/checkout');
-    }
+  
     // this.updateDBCart();
   }
 
   updateDBCart = () => {
     const cartItems = JSON.parse(window.localStorage.getItem('cartItems'));
+
     const produceIds = cartItems && cartItems.map((item) => {
       return item._id;
     })
@@ -79,9 +93,8 @@ class Cart extends PureComponent {
   }
 
   removeProduct = (order_id)=>{
-    console.log({order_id})
+  
     const indexFromCart = this.state.carts.findIndex((product)=> product.order_id === order_id);
-    // console.log("🚀 ~ file: cart.js ~ line 82 ~ Cart ~ index", index)
     if(indexFromCart >= 0){
       const newCart = this.state.carts.filter((product, index)=> indexFromCart !== index);
       this.setState({carts: newCart })
@@ -118,6 +131,7 @@ class Cart extends PureComponent {
 
   componentDidUpdate(){
     this.setState({cartCount: JSON.parse(window.localStorage.getItem('cartItems'))?.length || 0 })
+
   }
 
   render() {
@@ -131,7 +145,7 @@ class Cart extends PureComponent {
     //     }
     // }
     const totalPrice = this.state.carts && (this.state.carts.reduce((acc, item) => {
-      acc += item.total_price;
+      acc += item.price;
       return acc;
     }, 0) || 0);
     return (
@@ -146,7 +160,7 @@ class Cart extends PureComponent {
               <div className="r d-flex">
                 <Link to="/shop" className="back_link">
                   <img
-                    src={require("../../assets/left-arrow.svg")}
+                    src={arrowLeftSvg}
                     alt=""
                     style={{ width: 10, height: 10 }}
                   />
@@ -199,8 +213,8 @@ class Cart extends PureComponent {
                                 {/* <p>Type: {data.type} <br/> Category:{data.categoryID.categoryName}</p> */}
                               </div>
                               <div className="col-sm-3 item_price">
-                                <p>x{data.quantity_ordered} @ {data.total_price}</p>
-                                <NumberFormat value={data.total_price} displayType={'text'} thousandSeparator={true} prefix={'₦'} renderText={(value, props) => <p {...props}>{value}</p>} />
+                                <p>x{data.quantity} @ {data.price}</p>
+                                <NumberFormat value={data.price} displayType={'text'} thousandSeparator={true} prefix={'₦'} renderText={(value, props) => <p {...props}>{value}</p>} />
                                 {/* <p>{data.total_price}</p> */}
                               </div>
                                 <Button colorScheme="red" onClick={()=> this.removeProduct(data.order_id)}>Remove product</Button>

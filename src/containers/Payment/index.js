@@ -1,9 +1,21 @@
 import React, { PureComponent } from "react";
 import { connect } from "react-redux";
+import { PaystackButton } from "react-paystack";
+import jwtDecode from 'jwt-decode';
+import axios from 'axios';
+import {
+  Modal as ChakraModal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  Spinner,
+} from "@chakra-ui/react"
+
 
 // Styles
 import "rodal/lib/rodal.css";
-import { Wrapper, PaymentMethod, DeliveryMethod, SelectDelivery, DeliveryWrapper } from "./payment.styles";
+import { Wrapper, DeliveryMethod, SelectDelivery, DeliveryWrapper } from "./payment.styles";
 import "react-credit-cards/es/styles-compiled.css";
 
 // Actions
@@ -21,10 +33,15 @@ import Rodal from "rodal";
 
 // Extra utilities
 import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
-import { formatCreditCardNumber, formatCVC, formatExpirationDate } from "../../utils";
+// import { formatCreditCardNumber, formatCVC, formatExpirationDate } from "../../utils";
 
+import motorbikeSvg from '../../assets/motorbike.svg'
+import storeSvg from '../../assets/store.svg';
+import placeholderSvg from '../../assets/placeholder.svg'
+import './index.css';
 
 class Payment extends PureComponent {
+
   state = {
     email: "juwonanthony@example.com", // customer email
     amount: 0, //equals NGN100,
@@ -53,34 +70,94 @@ class Payment extends PureComponent {
         latitude: 6.5244,
         longitude: 3.3792
       }
+    },
+    placeOrderLoading: false,
+    delivery_cost: 700,
+    tax: '0.75',
+    componentProps :{
+      email: '',
+      amount: 0,
+      metadata: {
+        name: "",
+        phone: "",
+      },
+      className: "paystack_btn",
+      publicKey: "pk_test_1bbf5eb6c4eb0ed77bf63469ba581c6fb844669b",
+      text: "Pay",
+      onSuccess: () => this.handlePlaceOrder()
+       ,
+      onClose: () =>  console.log("user closed the payment modal"),
     }
   };
 
-  handleCallback = ({ issuer }, isValid) => {
-    if (isValid) {
-      this.setState({ issuer });
-    }
-  };
-
-  handleInputFocus = ({ target }) => {
+  // alert("Thanks for doing business with us! Come back soon!!")
+  handlePlaceOrder = ()=>{
     this.setState({
-      focused: target.name
-    });
-  };
+      placeOrderLoading: true
+    })
+    const currentUser = JSON.parse(localStorage.getItem("current_user"));
+    const products = JSON.parse(localStorage.getItem("cartItems"))
 
-  handleInputChange = ({ target }) => {
-    if (target.name === "number") {
-      target.value = formatCreditCardNumber(target.value);
-    } else if (target.name === "expiry") {
-      target.value = formatExpirationDate(target.value);
-    } else if (target.name === "cvc") {
-      target.value = formatCVC(target.value);
+
+    if(currentUser && currentUser.payload.customerId){
+      axios.defaults.headers.common['Authorization'] = `Bearer ${currentUser.token}`;
+      axios.post(`https://appetite-api-stage.herokuapp.com/api/order/${currentUser.payload.customerId}`, {
+        address: this.state.address,
+        delivery_cost: this.state.delivery_cost,
+        tax: this.state.tax,
+        delivery_address: this.state.address,
+        total_cost : this.state.totalPrice,
+        products: products
+      })
+      .then(function (response) {
+        localStorage.removeItem("cartItems")
+        window.location.replace(`/payment/success/${response.data.data.order_number}`)
+      })
+      .catch(function (error) {
+        alert(error.message);
+      });
     }
+  }
+  
+  isTokenExpired = () => {
+    const currentUser = JSON.parse(localStorage.getItem('current_user'));
+    const token = (currentUser && currentUser.token);
+    if(token){
+        const decoded = jwtDecode(token);
+        if (decoded.exp * 1000 <= new Date()) return true;
+        return false;
+    }else{
+        return true
+    }
+}
 
-    this.setState({ [target.name]: target.value }, () => {
-      console.log(this.state)
-    });
-  };
+  // handleCallback = ({ issuer }, isValid) => {
+  //   if (isValid) {
+  //     this.setState({ issuer });
+  //   }
+  // };
+
+  
+
+  // handleInputFocus = ({ target }) => {
+  //   this.setState({
+  //     focused: target.name
+  //   });
+  // };
+
+  // handleInputChange = ({ target }) => {
+  //   if (target.name === "number") {
+  //     target.value = formatCreditCardNumber(target.value);
+  //   } else if (target.name === "expiry") {
+  //     target.value = formatExpirationDate(target.value);
+  //   } else if (target.name === "cvc") {
+  //     target.value = formatCVC(target.value);
+  //   }
+
+  //   this.setState({ [target.name]: target.value }, () => {
+  //     console.log(this.state)
+  //   });
+  // };
 
   onSetDeliveryAddressFromPrevious = async address => {
     window.localStorage.setItem("varden_guest_addresss", address);
@@ -90,7 +167,6 @@ class Payment extends PureComponent {
     this.setState({address});
     const isAddressGeocodable = await this.isAddressGeocodable(address);
 
-    console.log(isAddressGeocodable);
 
     if (isAddressGeocodable) {
       let varden_guest_addressses = JSON.parse(window.localStorage.getItem("varden_guest_addressses"));
@@ -138,16 +214,13 @@ class Payment extends PureComponent {
   isAddressGeocodable = (address) => {
     return geocodeByAddress(address)
       .then(results => {
-        console.log(results);
         return getLatLng(results[0]);
       })
       .then(latLng => {
-        console.log('Success', latLng)
         return true;
       })
       .catch(error => {
         // this.setState({ address: "" }); 
-        console.error('Error', error)
         return false;
       });
   }
@@ -163,7 +236,6 @@ class Payment extends PureComponent {
     // const { issuer } = this.state;
     geocodeByAddress(this.state.address)
       .then(results => {
-        console.log(results)
         getLatLng(results[0])
       })
       .then(latLng => console.log('Success', latLng))
@@ -205,34 +277,48 @@ class Payment extends PureComponent {
     let varden_guest_addresss = window.localStorage.getItem(
       "varden_guest_addresss"
     );
-    if (this.props.cart) {
-      const totalPrice = this.props.cart.totalPrice;
+    const carts = JSON.parse(window.localStorage.getItem('cartItems'));
+    if (carts) {
+      const totalPrice = carts && (carts.reduce((acc, item) => {
+        acc += item.price;
+        return acc;
+      }, 0) || 0);
+
       if (totalPrice === 0) {
         window.location.replace('/shop')
       }
-      console.log("totalPrice", totalPrice, this.props);
+
       this.setState(
         {
-          amount: totalPrice * 100 //convert to kobo
-        },
-        () => console.log(this.state)
-      );
+          amount: (totalPrice + this.state.delivery_cost)  * 100,
+          totalPrice,
+          componentProps:{
+            ...this.state.componentProps,
+            amount: (totalPrice + this.state.delivery_cost) * 100
+          } //convert to kobo
+        },() => console.log(this.state));
     }
-    if (!current_user) {
+    if (!current_user || !current_user.payload.email || this.isTokenExpired()) {
       alert("you need to login first");
-      window.location.replace("/login");
-    } else if (current_user.address) {
-      this.setState({ address: current_user.address });
-    } else {
-      this.setState({ address: varden_guest_addresss });
+      localStorage.removeItem('current_user')
+      return window.location.replace("/login");
+    }else {
+      this.setState({ address: varden_guest_addresss, componentProps:{
+        ...this.state.componentProps,
+        email: current_user.payload.email
+      }});
     }
   }
+
 
   shouldComponentUpdate(nextProps, nextState) {
     if (nextState.address !== this.state.address) {
       return true;
     }
     if (nextState.isSetupAddress !== this.state.isSetupAddress) {
+      return true;
+    }
+    if (nextState.placeOrderLoading !== this.state.placeOrderLoading) {
       return true;
     }
     if (nextState.isCoordinateSet) {
@@ -272,9 +358,9 @@ class Payment extends PureComponent {
           },
           () => _this.fetchStores()
         );
-        console.log(
-          `latitide ${pos.coords.latitude} longitude ${pos.coords.longitude}`
-        );
+        // console.log(
+        //   `latitide ${pos.coords.latitude} longitude ${pos.coords.longitude}`
+        // );
       }, this.showGeolocationError);
     }
   };
@@ -314,7 +400,6 @@ class Payment extends PureComponent {
   };
 
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps.qrcode, this.props.qrcode)
     if (nextProps.qrcode !== this.props.qrcode && nextProps.success) {
       this.setState({ success: true }, () => {
         window.localStorage.setItem("qrcode", nextProps.qrcode);
@@ -407,19 +492,35 @@ class Payment extends PureComponent {
       return (<span class="badge badge-dark mr-2" onClick={this.onSetDeliveryAddressFromPrevious.bind(this, item)}>{item}</span>)
     }) || <small>No previous preferred location stored on this device</small>)
 
-    const { mapTrackingDetails } = this.state;
-    console.log(mapTrackingDetails);
+    // const { mapTrackingDetails } = this.state;
+    // console.log(this.state);
 
-    const origin = [mapTrackingDetails['rider']['latitude'], mapTrackingDetails['rider']['longitude']];
-    const destination = [mapTrackingDetails['destination']['latitude'], mapTrackingDetails['destination']['longitude']];
+    // const origin = [mapTrackingDetails['rider']['latitude'], mapTrackingDetails['rider']['longitude']];
+    // const destination = [mapTrackingDetails['destination']['latitude'], mapTrackingDetails['destination']['longitude']];
 
-    const travelMode = 'driving';
-    const distance = this.state.isCoordinateSet ? this.getDistance(origin, destination, travelMode) || 0 : <i className="mdi mdi-loading fa fa-spin" /> ;
-    const time = this.calculateDeliveryTime(distance) || <i className="mdi mdi-loading fa fa-spin" />;
+    // const travelMode = 'driving';
+    // const distance = this.state.isCoordinateSet ? this.getDistance(origin, destination, travelMode) || 0 : <i className="mdi mdi-loading fa fa-spin" /> ;
+    // const time = this.calculateDeliveryTime(distance) || <i className="mdi mdi-loading fa fa-spin" />;
     return (
       <Wrapper>
         <Navbar white />
         <div className="container">
+
+          {
+          this.state.placeOrderLoading 
+          &&  <ChakraModal closeOnOverlayClick={false} isOpen={this.state.placeOrderLoading}>
+          <ModalOverlay />
+          <ModalContent>
+            <ModalHeader textAlign="center">Placing your order please wait</ModalHeader>
+            {/* <ModalCloseButton /> */}
+            <ModalBody display="flex" justifyContent="center" alignItems="center">
+              <Spinner size="xl" />
+            </ModalBody>
+
+          </ModalContent>
+        </ChakraModal>
+          }
+
           <div className="row align-items-center justify-content-center padding-tb_sm">
             <div className="col-sm-5">
               <div className="row">
@@ -429,14 +530,16 @@ class Payment extends PureComponent {
                       <h5>Failed to make payment please try again</h5>
                     ) : null}
 
-                    <PaymentMethod>
+                    <div className="payment payment-box">
                       <h5 style={{ marginTop: 50 }}>Total Payment: N{this.state.totalPrice && this.state.totalPrice}</h5>
-                      <div className="payment payment-box">
-                        <form
+                      <PaystackButton {...this.state.componentProps} />
+                    </div>
+                    {/* <PaymentMethod>
+                        {/* <form
                           ref={c => (this.form = c)}
                           onSubmit={this.handleSubmit}
-                        >
-                          <div className="form-group">
+                        > */}
+                          {/* <div className="form-group">
                             <input
                               type="tel"
                               name="number"
@@ -483,8 +586,8 @@ class Payment extends PureComponent {
                             required
                             onChange={this.handleInputChange}
                             onFocus={this.handleInputFocus}
-                          />
-                          <div className="form-actions">
+                          /> */}
+                          {/* <div className="form-actions">
                             <Button
                               className="pay-btn"
                               buttonText="PAY"
@@ -492,10 +595,9 @@ class Payment extends PureComponent {
                                 this.props.loading && this.props.loading
                               }
                             />
-                          </div>
-                        </form>
-                      </div>
-                    </PaymentMethod>
+                        {/* </form> */}
+                      {/* </div>
+                    </PaymentMethod> */}
                   </div>
                 ) : (
                     <React.Fragment>
@@ -515,7 +617,7 @@ class Payment extends PureComponent {
                                   }
                                 >
                                   <img
-                                    src={require("../../assets/motorbike.svg")}
+                                    src={motorbikeSvg}
                                     alt=""
                                   />
                                   <p>Delivered to my location</p>
@@ -529,7 +631,7 @@ class Payment extends PureComponent {
                                   onClick={() => this.setDeliveryMethod("store")}
                                 >
                                   <img
-                                    src={require("../../assets/store.svg")}
+                                    src={storeSvg}
                                     alt=""
                                   />
                                   <p>Pickup from store</p>
@@ -549,7 +651,7 @@ class Payment extends PureComponent {
                                             : ''
                                         }
                                         <img
-                                          src={require("../../assets/placeholder.svg")}
+                                          src={placeholderSvg}
                                           alt=""
                                         />
                                       </span>
@@ -611,17 +713,32 @@ class Payment extends PureComponent {
                           <h5>Failed to make payment please try again</h5>
                         ) : null}
 
-                        {
+                        {/* {
                           this.state.deliveryMethod === "location"
                             ? <React.Fragment>
                                 <h6>Distance: {distance} km</h6>
                                 <h6 className="mb-4">Estimated Time: {time}hrs (delivery + preparation)</h6>
                               </React.Fragment>
                             : <h6 className="mb-4">Estimated Pickup Time: {time}hrs</h6>
-                        }
+                        } */}
 
+                  <div className="payment payment-box">
+                     {this.state.totalPrice ? <><h5 style={{ marginTop: 50 }}>Total Payment: ₦{(this.state.totalPrice + this.state.delivery_cost)}</h5><b>**Note delivery included ₦700</b></> : <h5>No item in cart</h5>}
+                      { ! this.state.address  ? <Button
+                                            buttonText="Setup an address"
+                                            className="main-btn"
+                                            onClick={() =>
+                                              this.setState({ isSetupAddress: true })
+                                            }
+                                          /> : !this.state.totalPrice ? <Button
+                                          buttonText="Buy Goods"
+                                          className="main-btn"
+                                          onClick={() =>
+                                            window.location.replace("/shop")
+                                          }/> : JSON.parse(localStorage.getItem("current_user")).payload.customerId? <PaystackButton {...this.state.componentProps} /> : <h5>Admins cannot buy a product</h5> }
+                    </div>
 
-                        <PaymentMethod>
+                        {/* <PaymentMethod>
                           {
                             !this.props.isFetching
                               ? <h5>Total Payment: N{this.state.amount / 100}</h5>
@@ -631,8 +748,9 @@ class Payment extends PureComponent {
                             <form
                               ref={c => (this.form = c)}
                               onSubmit={this.handleSubmit}
-                            >
-                              <div className="form-group">
+                            > */}
+
+                              {/* <div className="form-group">
                                 <input
                                   type="tel"
                                   name="number"
@@ -669,8 +787,9 @@ class Payment extends PureComponent {
                                     onFocus={this.handleInputFocus}
                                   />
                                 </div>
-                              </div>
-                              {
+                              </div> */}
+
+                              {/* {
                                 !this.props.isFetching
                                   ? <div className="form-actions">
                                     <Button
@@ -685,7 +804,8 @@ class Payment extends PureComponent {
 
                             </form>
                           </div>
-                        </PaymentMethod>
+                        </PaymentMethod> */}
+
                       </div>
                     </React.Fragment>
                   )}
@@ -763,6 +883,9 @@ class Payment extends PureComponent {
                         className="pay-btn"
                       />
                       : <Button
+                      onClick={()=> this.setState({
+                        isSetupAddress: false
+                      })}
                         buttonText="Save delivery address"
                         className="pay-btn"
                       />

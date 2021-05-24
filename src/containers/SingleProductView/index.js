@@ -3,7 +3,6 @@ import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import Swiper from "react-id-swiper";
-
 import { MainWrapper, IncrementerWrapper } from "./index.styles";
 import Navbar from "../../components/Header/Navbar";
 import Footer from "../../components/Footer/generalfooter";
@@ -21,6 +20,8 @@ import leftArrowSvg from '../../assets/left-arrow.svg';
 import { v4 as uuidv4 } from 'uuid';
 import NumberFormat from 'react-number-format';
 
+import ErrorSvg from '../../assets/error.png';
+import mainColorLoader from '../../assets/main-color-loader.svg';
 
 const ReviewsPane = (props) => {
   const { produce } = props;
@@ -29,6 +30,7 @@ const ReviewsPane = (props) => {
     acc += item.rating;
     return acc;
   }, 0);
+
   return (
     <div className="row review-list mt-4">
       <div className="col-md-12 mb-3 rating">
@@ -159,7 +161,6 @@ class SingleProductView extends PureComponent {
 
   onChangeQuantity = (e) => {
     e.preventDefault();
-    console.log(e.target.value, typeof e.target.value)
     if (e.target.value >= 1 && e.target.value && typeof parseInt(e.target.value) == 'number') {
       this.setState({quantity: e.target.value})
     }
@@ -237,7 +238,7 @@ class SingleProductView extends PureComponent {
               {loading ? (
                 <div className="col-sm-12 text-center align-self-center">
                   <img
-                    src={require("../../assets/main-color-loader.svg")}
+                    src={mainColorLoader}
                     alt=""
                   />
                   <Spinner size="xl" />
@@ -252,7 +253,7 @@ class SingleProductView extends PureComponent {
                         <div className="row align-items-center justify-content-center">
                           <div className="col-sm-6">
                             <EmptyState
-                              img={require("../../assets/error.png")}
+                              img={ErrorSvg}
                               title="There was an error fetching details"
                               body={`This could either be a network error or error from the database, please check your network connection and refresh the page`}
                               buttonText="Refresh page"
@@ -311,8 +312,10 @@ class SingleProductView extends PureComponent {
                                     onClick={()=> this._onAddToCart({
                                       ...this.props.produce,
                                       order_id: uuidv4(),
-                                      quantity_ordered: this.state.quantity,
-                                      total_price: (this.state.quantity * produce.price)
+                                      name:  produce.title,
+                                      quantity: this.state.quantity,
+                                      price: (this.state.quantity * produce.price),
+                                      price_per_unit: produce.price
                                     })}
                                   />
                                 </div>

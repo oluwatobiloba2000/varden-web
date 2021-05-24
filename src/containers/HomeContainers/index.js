@@ -1,6 +1,7 @@
 import React, { PureComponent } from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
+// import jwtDecode from 'jwt-decode';
 // import InputRange from "react-input-range";
 import { HomeWrapper } from "./home.styles.js";
 
@@ -21,7 +22,7 @@ import MainColorLoaderSvg from '../../assets/main-color-loader.svg';
 import "react-input-range/lib/css/index.css";
 // import { Text } from "@chakra-ui/layout";
 // import { Box } from "@chakra-ui/layout";
-
+import ErrorSvg from '../../assets/error.png';
 class Home extends PureComponent {
   state = {
     isModalVisible: false,
@@ -38,7 +39,9 @@ class Home extends PureComponent {
     selectedCategory: ""
   };
 
+
   componentDidMount() {
+   
     this.props.AllFarmProduce();
   }
 
@@ -81,7 +84,6 @@ class Home extends PureComponent {
   };
 
   _getPriceRange = value => {
-    console.log(value);
     this.setState({ value }, () =>
       this.setState({
         filter: {
@@ -98,7 +100,6 @@ class Home extends PureComponent {
       category: this.state.selectedCategory,
       price: !this.state.filter.value ? '' : this.state.filter.value,
     }
-    console.log(filterOptions)
     this.props.filterByType(filterOptions);
   };
 
@@ -124,12 +125,6 @@ class Home extends PureComponent {
     } = this.props;
     return (
       <HomeWrapper>
-        {console.log({loading,
-      produces,
-      error,
-      isCartAdding,
-      isCartAdded,
-      isCartAddingFailed})}
         <Navbar showCart={() => this.setState({ isCartVisible: true })} white />
 
         <div className="container">
@@ -205,9 +200,9 @@ class Home extends PureComponent {
                       style={{ marginTop: 20 }}
                     >
                       <EmptyState
-                        img={require("../../assets/error.png")}
+                        img={ErrorSvg}
                         title="There was an error fetching your produces"
-                        body={`This was caused by ${error}`}
+                        body={`Try again by clicking on the refresh button`}
                         buttonText="Refresh page"
                         onClick={() => window.location.reload()}
                       />

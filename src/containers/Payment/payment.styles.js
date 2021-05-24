@@ -178,6 +178,40 @@ export const PaymentMethod = styled.div`
       margin-top: 50px;
     }
 
+    button{
+      width: 230px;
+      height: 40px;
+      color: white;
+      background-color: #21a746;
+      margin-top: 20px;
+    }
 
+  }
+`;
+
+export const MainContent = styled.div`
+  width: 100%;
+  padding-top:100px;
+  padding-bottom:50px;
+  .check{
+    margin-bottom:20px;
+  }
+  .btn-con{
+    margin-top:20px;
+    .btn{height:60px;text-transform:uppercase;width:100%;font-size:12px}
+    .btn-white{
+      background-color:#fff;
+      border:1px solid #f3f3f3;
+    }
+    .btn-green{
+      background-color:${colors.mainColor};
+      color:#fff;
+      margin-right:10px;
+    }
+  }
+  @media(max-width:460px){
+    .btn-green{
+      margin-bottom:10px;
+    }
   }
 `;

@@ -37,6 +37,7 @@ const Signup = ()  =>  {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const history = useHistory()
+  let errMsg;
 
   const onSubmit = formData => {
   console.log("🚀 ~ file: index.js ~ line 40 ~ Signup ~ formData", {formData})
@@ -53,17 +54,23 @@ const Signup = ()  =>  {
       window.localStorage.setItem('current_user', JSON.stringify({token : data.token}));
     })
     .catch(err => {
-      const error =  err.response ? err.response.statusText : err.message ? err.response.data : err.response.data.message;
-      console.log("🚀 ~ file: index.js ~ line 55 ~ Signup ~ err", {err})
+      if(err.response.data){
+        for(let e in err.response.data){
+            errMsg = err.response.data[e][0]
+        }
+      }else{
+        errMsg = err.message
+      }
+      console.log("🚀 ~ file: index.js ~ line 55 ~ Signup ~ err", {error, errMsg, err})
       setLoading(false);
-      setError(error);
+      setError(errMsg);
     });
   }
 
 
     return (
       <SignupWrapper>
-        <div className="container">
+        <div className="container" style={{color: 'black'}}>
           <div className="row justify-content-center">
            
             <FormContainer>
