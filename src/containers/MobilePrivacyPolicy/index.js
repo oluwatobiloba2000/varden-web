@@ -26,7 +26,7 @@ class MobilePrivacyPolicy extends PureComponent {
             <div className="row align-items-center">
               <div className="col-sm-12">
                 <p className="mt-3">
-                  Thank you for choosing to be part of our community at Varden
+                  Thank you for choosing to be part of our community at  Appetite
                   foods Limited (“Company”, “we”, “us”, “our”). We are committed
                   to protecting your personal information and your right to
                   privacy. If you have any questions or concerns about this

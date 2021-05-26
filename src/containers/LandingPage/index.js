@@ -117,12 +117,12 @@ const ProduceSwiper = (props) => {
             <div className="col-sm-4 col-md-4 animated slideInLeft">
               <ProduceCardWrapper>
                 <div className="text-center">
-                  <div className="text-right">
+                  {/* <div className="text-right">
                     <span className="rating-box">
                       <img src={starSvg} width="10px" alt="" className="img-fluid" /> <span className="inner">4.2</span>
                     </span>
-                  </div>
-                  <img style={{margin:'auto'}} src={item.img} alt="" className="img-fluid product-image" />
+                  </div> */}
+                  <img style={{margin:'auto', width: "200px"}} src={item.img} alt="" className="img-fluid product-image" />
                   <h4>{item.headerText}</h4>
                   <p className="mt-2">{item.subText}</p>
                 </div>
@@ -324,7 +324,7 @@ class LandingPage extends PureComponent {
                     <img src="https://cdn.dribbble.com/users/158919/screenshots/6267284/group_1336_4x.png" className="img-fluid" />
                   </div> */}
                   {
-                    ["Lekki, Lagos", "Surulere, Lagos", "Ikeja, Lagos", "Lakowe, Lagos"].map((item, i) => {
+                    ["Lekki, Lagos","Ikoyi, Lagos", "VI, Lagos", "Ajah Lagos"].map((item, i) => {
                       return (
                         <div className="col-md-3 text-center mb-4" key={i}>
                           <span style={{ color: '#fff' }}><i className="mdi mdi-map-marker" /> {item}</span>

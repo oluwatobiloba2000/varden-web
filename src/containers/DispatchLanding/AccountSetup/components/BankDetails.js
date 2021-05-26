@@ -51,7 +51,7 @@ class BankDetails extends PureComponent {
           </div>
           <div className="col-sm-6 col-md-6 col-lg-6">
             <div className="group">
-              <label htmlFor="bvn">varden account password</label>
+              <label htmlFor="bvn"> Appetite account password</label>
               <Input
                 placeholder=""
                 type="password"

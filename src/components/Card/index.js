@@ -38,9 +38,6 @@ class Card extends PureComponent {
         borderRadius='5px'
         marginRight='5px'
         className="col-sm-3 col-md-3 col-lg-3" itemScope itemType="http://schema.org/Product">
-        {/* <div>
-          <img src={image} style={{marginBottom: '5px'}} alt="title" loading="lazy" width="300px" height="300px"/>
-        </div> */}
         <div style={{color: '#ffffff'}} className="food_image">
             <Text _hover={{
               color: "#ef761e"

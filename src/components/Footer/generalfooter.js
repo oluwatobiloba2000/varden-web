@@ -32,7 +32,7 @@ const Footer = () => {
           </div>
           <div className="col-sm-6 col-md-2 col-lg-2">
             <div className="links">
-              <h6>using varden</h6>
+              <h6>using Appetite</h6>
               <NavLink to="/privacy">Privacy</NavLink>
               <NavLink to="/terms">Terms of service</NavLink>
             </div>

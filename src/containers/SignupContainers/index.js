@@ -87,7 +87,7 @@ const Signup = ()  =>  {
               />
             </div>
               <p>
-                Enjoy the best of varden
+                Enjoy the best of Appetite
                 <br /> create an account today!
               </p>
               <Collapse in={error} style={{marginBottom: '13px'}} animateOpacity>

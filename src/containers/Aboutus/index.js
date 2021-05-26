@@ -14,7 +14,7 @@ class About extends PureComponent {
           <div className="container">
             <div className="row">
               <div className="col-12 top-margin text-center">
-                <h1>The Varden foods' story</h1>
+                <h1>The  Appetite's story</h1>
                 <p>Learn about our story, our vision and mission</p>
               </div>
             </div>
@@ -24,9 +24,9 @@ class About extends PureComponent {
           <div className="container">
             <div className="row align-items-center">
               <div className="col-sm-6">
-                <h1>What is Varden foods?</h1>
+                <h1>What is Appetite foods?</h1>
                 <p className="mt-3">
-                  Varden Foods is an organic food company specialized in the
+                Appetite Foods is an organic food company specialized in the
                   processing and distribution of high quality fresh farm produce
                   for consumption in and around Nigeria. We are driven by the
                   need to refute the common impression that consuming healthy,
@@ -34,7 +34,7 @@ class About extends PureComponent {
                   commitment to providing you quality at affordable prices, with
                   the goal of being your leading food processing company, as
                   engineered our excellent customer service delivery. We know
-                  the world has gotten so busy, with Varden you have
+                  the world has gotten so busy, with  Appetite you have
                   flexibility.
                 </p>
               </div>

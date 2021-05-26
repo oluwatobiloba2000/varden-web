@@ -2,7 +2,7 @@ import React, { PureComponent } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
-import Logo from "../../../assets/logo.jpg";
+import Logo from "../../../assets/appetite-logo.jpeg";
 // import Button from "../../Button";
 import { NavbarWrapper } from "./navbar.styles";
 // import { CartIcon } from "../../Icons";
@@ -66,7 +66,7 @@ class Navbar extends PureComponent {
         <div className="container-fluid d-md-flex">
           <nav className="container none-mobile-nav  d-md-flex">
             <a href="/">
-              <img src={Logo} alt="" className="logo" />
+              <img src={Logo} style={{width: "173px"}} alt="" className="logo" />
             </a>
             <div className="top-margin d-none-mobile" style={{
               display: 'flex',

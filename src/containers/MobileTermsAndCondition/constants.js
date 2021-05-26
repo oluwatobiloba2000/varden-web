@@ -3,9 +3,9 @@ export const termsDefinition = [
   {
     name: "App",
     definition:
-      "means Appetite by Varden or any other name as may be	decided by Varden Food Limited including its products and services traded hereunder.",
+      "means Appetite by  Appetite or any other name as may be	decided by  Appetite Food Limited including its products and services traded hereunder.",
   },
-  { name: "Company", definition: "means Varden Foods Limited" },
+  { name: "Company", definition: "means  Appetite Foods Limited" },
   {
     name: "Content",
     definition:
@@ -34,11 +34,11 @@ export const termsDefinition = [
   },
   {
     name: "Seller & Service Provider",
-    definition: "means Varden Foods Limited.",
+    definition: "means  Appetite Foods Limited.",
   },
   {
     name: "Services",
-    definition: `means all process of Sales and Deliveries including Varden Farm to table shop which will comprise of  the sale of ready fast food such as: 1. On the go (grilled plantain, grilled sweet corn and chicken).\n2. Smokey plate (fried yam chips, chicken, grilled plantain, grilled sweet corn and sauce).\n3. peppered stick gizzard etc.`,
+    definition: `means all process of Sales and Deliveries including  Appetite Farm to table shop which will comprise of  the sale of ready fast food such as: 1. On the go (grilled plantain, grilled sweet corn and chicken).\n2. Smokey plate (fried yam chips, chicken, grilled plantain, grilled sweet corn and sauce).\n3. peppered stick gizzard etc.`,
   },
   {
     name: "User/Customer",
@@ -127,7 +127,7 @@ export const suspendService = [
   "we are required to suspend or terminate the Services to comply with a law, instruction, request or order issued by any court, government/regulatory agency, security agency, or any other competent legal authority; or",
   "we are required to undertake repair or maintenance work on the App; or",
   "there is a Force Majeure Event; or",
-  "any other reason determined at the discretion of Varden Foods Limited",
+  "any other reason determined at the discretion of  Appetite Foods Limited",
 ];
 
 export const terminateServiceByYou = [

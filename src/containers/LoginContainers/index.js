@@ -114,7 +114,7 @@ class Login extends PureComponent {
             </FormContainer>
             <div className="col-sm-12 align-items-center text-center">
               <p className="alt-login-text">
-                New to varden? <Link to="/signup">Sign up here</Link>
+                New to Appetite? <Link to="/signup">Sign up here</Link>
               </p>
             </div>
           </div>

@@ -18,7 +18,7 @@ class DispatchLanding extends PureComponent {
               <div className="row align-items-center justify-content-center">
                 <div className="col-sm-8 text-center">
                   <h2>Make extra money on the side</h2>
-                  <p>Join varden foods delivery partners, deliver produce to customers and earn more</p>
+                  <p>Join  Appetite foods delivery partners, deliver produce to customers and earn more</p>
                   <div className="margin__top-sm">
                     <p></p>
                   </div>

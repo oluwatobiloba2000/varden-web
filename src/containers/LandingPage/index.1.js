@@ -234,7 +234,7 @@ class LandingPage extends PureComponent {
                 <a href="/recipes" className="food-category_img">
                   <div className="bg_same-height recipes" />
                   <div className="details">
-                    <h4>Varden Recipes</h4>
+                    <h4>Appetite Recipes</h4>
                     <p>Learn to cook delicious meals everyday</p>
                   </div>
                 </a>
@@ -243,7 +243,7 @@ class LandingPage extends PureComponent {
                 <a href="/events" className="food-category_img">
                   <div className="bg_same-height varden-events" />
                   <div className="details">
-                    <h4>Varden Events</h4>
+                    <h4>Appetite Events</h4>
                     <p>Food Events that would blow you minds</p>
                   </div>
                 </a>
