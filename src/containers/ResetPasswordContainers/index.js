@@ -9,6 +9,7 @@ import swal from "sweetalert";
 
 import ApiService from "../../services/api.services";
 import { api } from "../../services/Endpoints";
+import logo from "../../assets/appetite-logo.jpeg"
 
 class Reset extends PureComponent {
   constructor(props) {
@@ -69,9 +70,10 @@ class Reset extends PureComponent {
             <FormContainer>
               <div className="col-sm-12 align-items-center text-center">
                 <img
-                  src={require("../../assets/logo.jpg")}
+                  src={logo}
                   alt="logo"
                   className="logo"
+                  style={{width: '75%'}}
                   onClick={() => this.props.history.push("/")}
                 />
               </div>

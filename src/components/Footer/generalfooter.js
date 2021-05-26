@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import logoImg from "../../assets/logo.jpg"
+import logoImg from "../../assets/appetite-logo.jpeg"
 import { Wrapper } from "./generalfooter.styles";
 const Footer = () => {
   return (
@@ -8,7 +8,7 @@ const Footer = () => {
       <div className="container">
         <div className="row just">
           <div className="col-sm-12 col-md-4 col-lg-4">
-            <img src={logoImg} alt="" className="logo"/>
+            <img src={logoImg} alt="" style={{width: '75%'}} className="logo"/>
             <p>
               To meet the huge demand gaps and create wealth through agriculture
               by producing different types of agricultural products and thus 

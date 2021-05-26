@@ -11,7 +11,7 @@ import { LoginWrapper, FormContainer } from "./login.styles";
 import { Button } from "@chakra-ui/button";
 import { Collapse } from "@chakra-ui/transition";
 import { Alert, AlertIcon } from "@chakra-ui/alert";
-import logoSVG from '../../assets/logo.jpg';
+import logoSVG from '../../assets/appetite-logo.jpeg';
 
 class Login extends PureComponent {
   constructor(props) {
@@ -71,6 +71,7 @@ class Login extends PureComponent {
                 src={logoSVG}
                 alt="logo"
                 className="logo"
+                style={{width: '75%'}}
                 onClick={() => this.props.history.push("/")}
               />
             </div>
@@ -107,9 +108,9 @@ class Login extends PureComponent {
                 </Button>
               </div>
               <div className="input-wrapper terms-text">
-                <p className="terms-text">
+                {/* <p className="terms-text">
                   <Link to="/reset-password">forgot password?</Link>
-                </p>
+                </p> */}
               </div>
             </FormContainer>
             <div className="col-sm-12 align-items-center text-center">

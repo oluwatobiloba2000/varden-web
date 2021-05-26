@@ -19,7 +19,7 @@ import { Text } from "@chakra-ui/layout";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 import Axios from "axios";
-import logoSVG from '../../assets/logo.jpg'
+import logoSVG from '../../assets/appetite-logo.jpeg'
 
 const schema = yup.object().shape({
   name: yup.string().required(),
@@ -82,6 +82,7 @@ const Signup = ()  =>  {
               <img
                 src={logoSVG}
                 alt="logo"
+                style={{width: "75%"}}
                 className="logo"
                 onClick={() => history.push("/")}
               />
