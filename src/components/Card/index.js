@@ -23,12 +23,25 @@ class Card extends PureComponent {
       <Box  _hover={{
         color: "#ef761e",
         border: "1px solid #ef761e",
-      }} onClick={onCardClick} style={{cursor: 'pointer', border: '1px solid #ef761e3b',
-      borderRadius: '5px', marginRight: '5px'}} className="col-sm-3 col-md-3 col-lg-3" itemScope itemType="http://schema.org/Product">
-        <div>
+      }}
+      onClick={()=> onCardClick()}
+      height="200px"
+      maxWidth="175px"
+      backgroundSize="100%"
+      backgroundRepeat="no-repeat"
+      backgroundImage={`linear-gradient(
+        180deg
+        ,rgba(255,255,255,0) 0%,rgb(0 0 0 / 42%) 59.69%,rgba(13,12,12,0.82) 100%), url(${image})`}
+        display="flex"
+        alignItems="flex-end"
+        cursor="pointer" 
+        borderRadius='5px'
+        marginRight='5px'
+        className="col-sm-3 col-md-3 col-lg-3" itemScope itemType="http://schema.org/Product">
+        {/* <div>
           <img src={image} style={{marginBottom: '5px'}} alt="title" loading="lazy" width="300px" height="300px"/>
-        </div>
-        <div className="food_image">
+        </div> */}
+        <div style={{color: '#ffffff'}} className="food_image">
             <Text _hover={{
               color: "#ef761e"
             }} style={{marginBottom: '5px'}}>{title}</Text>
