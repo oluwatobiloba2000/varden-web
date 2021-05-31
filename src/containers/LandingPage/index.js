@@ -15,6 +15,15 @@ import locationImg from "../../assets/location.png";
 import deliveryImg from "../../assets/delivery2.png"
 import phoneSvg from "../../assets/phones.svg";
 
+import oldLayers from '../../assets/Oldlayers.jpg';
+import wholeChickenImg from '../../assets/whole chicken.jpg';
+import roastedChickenImg from '../../assets/roasted chicken.jpg';
+import sweetCornImg from '../../assets/sweetcorn.jpg';
+import garriImg from '../../assets/garri-bag.jpg';
+import Habanero_pepper_img from '../../assets/habanero pepper.jpg';
+import bell_pepper_img from '../../assets/bell-pepper.jpg';
+import eggs_img from '../../assets/eggs.jpg';
+
 const MastheadSwiper = (props) => {
   const params = {
     spaceBetween: 0,
@@ -95,15 +104,40 @@ const ProduceSwiper = (props) => {
 
   const data = [
     {
-      img: "https://images.unsplash.com/photo-1467020323552-36f7bf0e30e6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80",
-      headerText: "Tomato",
+      img: oldLayers,
+      headerText: "Carton, Chicken",
       subText: "Fresh from farm"
     }, {
-      img: "https://images.pexels.com/photos/214158/pexels-photo-214158.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-      headerText: "Banana",
+      img: wholeChickenImg,
+      headerText: "WHole Chicken (1.5kg)",
       subText: "Fresh from farm"
     }, {
-      img: "https://images.unsplash.com/photo-1516448620398-c5f44bf9f441?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1947&q=80",
+      img: roastedChickenImg,
+      headerText: "Roasted Chicken",
+      subText: "Fresh from farm"
+    },
+    {
+      img: sweetCornImg,
+      headerText: "Sweet Corn",
+      subText: "Fresh from farm"
+    },
+    {
+      img: garriImg,
+      headerText: "Ijebu Garri",
+      subText: "Fresh from farm"
+    },
+    {
+      img: Habanero_pepper_img,
+      headerText: "Habanero Pepper",
+      subText: "Fresh from farm"
+    },
+    {
+      img: bell_pepper_img,
+      headerText: "Bell Pepper Red, Yellow, Green",
+      subText: "Fresh from farm"
+    },
+    {
+      img: eggs_img,
       headerText: "Eggs",
       subText: "Fresh from farm"
     }
