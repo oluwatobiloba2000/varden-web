@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import logoImg from "../../assets/appetite-logo.jpeg"
+import logoImg from "../../assets/appetite-logo-no-background.png"
+
 import { Wrapper } from "./generalfooter.styles";
 const Footer = () => {
   return (
