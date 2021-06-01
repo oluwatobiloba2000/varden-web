@@ -103,7 +103,7 @@ export const Wrapper = styled.div`
     }
     .col-1-cell-1 {
       background-image: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.7) 59.69%, rgba(13, 12, 12, 0.82) 100%),
-      url("https://images.unsplash.com/photo-1501200291289-c5a76c232e5f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80");
+      url("https://res.cloudinary.com/oluwatobby/image/upload/v1622506534/plantain_bfbiw3.png");
       height: 560px;
       max-height: 560px;
       background-size: cover;
@@ -133,7 +133,7 @@ export const Wrapper = styled.div`
     }
     .col-2-cell-1 {
       background-image: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.7) 29.69%, rgba(13, 12, 12, 0.82) 100%),
-      url("https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+      url("https://res.cloudinary.com/oluwatobby/image/upload/v1622506678/Broilers_sk8asp.jpg");
       height: 265px;
       max-height: 265px;
       background-size: cover;
@@ -155,7 +155,7 @@ export const Wrapper = styled.div`
   }
   .col-2-cell-2 {
     background-image: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.7) 29.69%, rgba(13, 12, 12, 0.82) 100%),
-    url("https://images.pexels.com/photos/2233351/pexels-photo-2233351.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+    url("https://res.cloudinary.com/oluwatobby/image/upload/v1622506773/Cockerel_thsha7.jpg");
     height: 265px;
     max-height: 265px;
     background-size: cover;
@@ -177,7 +177,7 @@ export const Wrapper = styled.div`
 }
 .col-2-cell-3 {
   background-image: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.7) 29.69%, rgba(13, 12, 12, 0.82) 100%),
-  url("https://images.unsplash.com/photo-1453831362806-3d5577f014a4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1938&q=80");
+  url("https://res.cloudinary.com/oluwatobby/image/upload/v1622506829/Oldlayers_uxpeqb.jpg");
   height: 265px;
   max-height: 265px;
   background-size: cover;
@@ -199,7 +199,7 @@ export const Wrapper = styled.div`
 }
 .col-2-cell-4 {
   background-image: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.7) 29.69%, rgba(13, 12, 12, 0.82) 100%),
-  url("https://images.unsplash.com/photo-1551134488-df8e2b6e2861?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80");
+  url("https://res.cloudinary.com/oluwatobby/image/upload/v1622507085/karol-klajar-JzpiVI4n5x0-unsplash_m5gotf.jpg");
   height: 265px;
   max-height: 265px;
   background-size: cover;

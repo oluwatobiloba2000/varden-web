@@ -301,7 +301,7 @@ class LandingPage extends PureComponent {
               <div className="col-md-6">
                 <div className="col-1-cell-1 row align-items-end">
                   <div>
-                    <h2>Roasted Chicken</h2>
+                    <h2>Plantain</h2>
                     <p><img src={starSvg} width="10px" alt="" className="img-fluid" /> <span className="inner">4.2</span> (20 Reviews)</p>
                   </div>
                 </div>
@@ -311,7 +311,7 @@ class LandingPage extends PureComponent {
                   <div className="col-md-6">
                     <div className="col-2-cell-1 row align-items-end">
                       <div>
-                        <h6>Hamburger</h6>
+                        <h6>Boilers</h6>
                         <p><img src={starSvg} width="10px" alt="" className="img-fluid" /> <span className="inner">4.2</span> (20 Reviews)</p>
                       </div>
                     </div>
@@ -319,7 +319,7 @@ class LandingPage extends PureComponent {
                   <div className="col-md-6">
                     <div className="col-2-cell-2 row align-items-end">
                       <div>
-                        <h6>Chips</h6>
+                        <h6>Cockerel</h6>
                         <p><img src={starSvg} width="10px" alt="" className="img-fluid" /> <span className="inner">4.2</span> (20 Reviews)</p>
                       </div>
                     </div>
@@ -327,7 +327,7 @@ class LandingPage extends PureComponent {
                   <div className="col-md-6">
                     <div className="col-2-cell-3 row align-items-end">
                       <div>
-                        <h6>Rice & Varieties </h6>
+                        <h6>Old layers</h6>
                         <p><img src={starSvg} width="10px" alt="" className="img-fluid" /> <span className="inner">4.2</span> (20 Reviews)</p>
                       </div>
                     </div>
@@ -335,7 +335,7 @@ class LandingPage extends PureComponent {
                   <div className="col-md-6"> 
                     <div className="col-2-cell-4 row align-items-end">
                       <div>
-                        <h6>Shredded Beef</h6>
+                        <h6>Noilers</h6>
                         <p><img src={starSvg} width="10px" alt="" className="img-fluid" /> <span className="inner">4.2</span> (20 Reviews)</p>
                       </div>
                     </div>
