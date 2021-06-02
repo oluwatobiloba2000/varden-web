@@ -25,8 +25,9 @@ class Card extends PureComponent {
         border: "1px solid #ef761e",
       }}
       onClick={()=> onCardClick()}
+      mt="5px"
       height="200px"
-      maxWidth="175px"
+      maxWidth="165px"
       backgroundSize="100%"
       backgroundRepeat="no-repeat"
       backgroundImage={`linear-gradient(

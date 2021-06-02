@@ -82,7 +82,7 @@ class Payment extends PureComponent {
         phone: "",
       },
       className: "paystack_btn",
-      publicKey: "pk_test_1bbf5eb6c4eb0ed77bf63469ba581c6fb844669b",
+      publicKey: "pk_test_845cec4327952efa6af937ea422eb1b3726719a9",
       text: "Pay",
       onSuccess: () => this.handlePlaceOrder()
        ,

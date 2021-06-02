@@ -182,7 +182,7 @@ class Home extends PureComponent {
                 </div>
               </div> */}
               <div className="col-sm-12">
-                <div className="row" style={{margin: 0}}>
+                <div className="row" style={{margin: 0, justifyContent: "center"}}>
                   {loading ? (
                     <div style={{ textAlign: "center", display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' ,width: "100%", paddingBottom: 50, paddingTop: 50 }}>
                       <img

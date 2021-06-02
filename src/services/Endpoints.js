@@ -5,7 +5,7 @@ export const api = {
   createUser: "/api/customer",
   loginUser: "/api/login",
   forgotPass: "/api/forgot",
-  produce: "/api/product",
+  produce: "/api/product/display",
   cart: "/api/carts",
   dispatch: '/api/rider',
   stores: "/api/store/near",

@@ -37,7 +37,7 @@ export const SingleFarmProduce = id => {
       type: 'FETCH_SINGLE',
       payload: API({'Content-Type': 'application/json'})({
         method:'GET',
-        url: `${Endpoints.api.baseUrl}${Endpoints.api.produce}/${id}`,
+        url: `${Endpoints.api.baseUrl}/api/product/${id}`,
       })
     }).catch(error => {
       const err = {error};
