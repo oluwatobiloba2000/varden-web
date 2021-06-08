@@ -6,6 +6,9 @@ export const HomeWrapper = styled.div`
   background-color: ${colors.containerBackgroundColor};
   position:relative;
   min-height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
   .card-link {
     text-decoration: none
   }

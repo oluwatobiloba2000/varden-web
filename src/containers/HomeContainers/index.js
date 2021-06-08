@@ -248,7 +248,7 @@ class Home extends PureComponent {
             </div>
           </main>
         </div>
-        <Footer />
+        <Footer style={{height:"100%"}}/>
         <Modal
           show={this.state.isModalVisible}
           onClose={() => this.setState({ isModalVisible: false })}
